@@ -14,7 +14,7 @@ figure
 subplot(121)
 imshow(img, [0, 255])
 subplot(122)
-imshow(spatial_upsample(img_d32, [512, 512], "bilinear"), [0, 255])
+imshow(spatial_upsample(img_d32, [512, 512]), [0, 255])
 
 
 %% Quantize Gray level

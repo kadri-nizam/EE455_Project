@@ -48,7 +48,7 @@ function new_img = nearest_neighbour(img, target_dim)
 
             % Assign value in new_img pixel-block based on upsampling of
             % pixel(s) in img
-            new_img(r_block, c_block) = img(row, col) * ones(blk_size.row, blk_size.col);
+            new_img(r_block, c_block) = img(row, col);
 
         end
     end
