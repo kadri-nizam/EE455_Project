@@ -1,6 +1,17 @@
-%% Spatial upsampling
-
 function new_img = spatial_upsample(img, target_dim, varargin)
+% SPATIAL_UPSAMPLE  upsamples img to size (M, N)
+%   SPATIAL_UPSAMPLE(img, [M, N]) returns an image matrix of dimensions 
+%   (M, N), upsampled via nearest neighbour interpolation
+%
+%   SPATIAL_UPSAMPLE(img, [M, N], method) upsamples img to size
+%   (M, N) using the specified upsampling method
+%
+%   Multiple methods are available to choose from:
+%
+%       1) Nearest-Neighbour: "nearest_neighbour" OR "nn" OR "proximal"
+%       2) Bilinear Interpolation: "bilinear" OR "linear"
+%
+%   See also SPATIAL_DOWNSAMPLE.
 
     % Use nearest_neighbour as default if user did not provide a method
     % argument
