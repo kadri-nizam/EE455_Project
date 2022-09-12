@@ -13,7 +13,7 @@
 %
 %   See also NEAREST_NEIGHBOUR, BILINEAR, SPATIAL_DOWNSAMPLE
 %
-%   Implementation details can be found at: http://google.com
+%   Implementation detail can be found at: http://google.com
 
 function new_img = spatial_upsample(img, target_dim, varargin)
 

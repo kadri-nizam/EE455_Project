@@ -1,3 +1,17 @@
+% BILINEAR  performs upsampling of img via bilinear interpolation
+%
+%   BILINEAR(img, [M, N]) returns an image matrix of dimensions 
+%   (M, N), upsampled via bilinear interpolation
+%
+%   Processing Flow:
+%       1) Interpolate sub-pixel coordinates
+%       2) Interpolate grayscale values for the sub-pixels. First along
+%       columns, then along rows
+%
+%   See also SPATIAL_UPSAMPLE, NEAREST_NEIGHBOUR
+%
+%   Implementation detail can be found at: http://google.com
+
 function new_img = bilinear(img, target_dim)
     % Prepare variables involving sizes
     [n_row, n_col] = size(img);

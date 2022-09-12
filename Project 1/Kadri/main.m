@@ -13,9 +13,14 @@
 %       restricted to powers of 2
 %
 %   Running the project:
-%       Simply press "Run" on main.m in the MATLAB IDE. Documentation of
-%       the 
+%       Simply press "Run" on main.m in the MATLAB IDE or type "main" into 
+%       the MATLAB console. Discussion of the algorithms in this
+%       code base as well as the results is covered in http://google.com
 %     
+%   See also:
+%       SPATIAL_UPSAMPLE, SPATIAL_DOWNSAMPLE, QUANTIZE, NEAREST_NEIGHBOUR,
+%       BILINEAR
+%
 %   Authors:
 %       Austin Huyett, Kadri Nizam, Hayden Weber
 %
@@ -24,30 +29,56 @@
 %% Clear MATLAB Environment
 
 clc; clear; close all;
-%% Imports
+
+%% File Imports
 
 f = imread("walkbridge.tif", "tif");
-
-% Alpha channel at index z=2 is not needed
 img = f(:, :, 1);
 
-%% Downsample Spatial Resolution
+%% Question 1 - Downsampling and Upsampling via Nearest-Neighbour
 
-img_d32 = spatial_downsample(img, 128 .* [1, 1]);
+target_dim = [256, 128, 32];
 
-%% Upsample Spatial Resolution
+for ii = target_dim
+    downsampled = spatial_downsample(img, ii .* [1, 1]);
+    upsampled = spatial_upsample(downsampled, 512 .* [1, 1]);
 
-figure
-subplot(121)
-imshow(img, [0, 255])
-subplot(122)
-imshow(spatial_upsample(img_d32, [512, 512]), [0, 255])
+    filename = sprintf("output/Q1_downsample_%dx%d.tif", ii .* [1, 1]);
+    imwrite(uint8(upsampled), filename, "tif");
+end
+
+%% Question 2 - Upsampled 32x32 via Bilinear
+
+downsampled = spatial_downsample(img, 32 .* [1, 1]);
+upsampled = spatial_upsample(downsampled, 512 .* [1, 1], "bilinear");
+
+filename = sprintf("output/Q2_up_bilinear_%dx%d.tif", 32 .* [1, 1]);
+imwrite(uint8(upsampled), filename, "tif");
+
+%% Question 3 - Grayscale Quantization
+
+level = 7:-1:1;
+
+for ii = level
+    quantized = quantize(img, ii);
+
+    filename = sprintf("output/Q3_quantized_%dbit.tif", ii);
+    imwrite(uint8(quantized), filename, "tif");
+end
+
+%% Question 4 - Downsample 256x256, Quantize 6-bit
+
+downsampled = spatial_downsample(img, 256 .* [1, 1]);
+upsampled = spatial_upsample(downsampled, 512 .* [1, 1], "bilinear");
+
+quantized = quantize(upsampled, 6);
+
+filename = sprintf("output/Q4_quantized_%dx%d_6bit.tif", 256 .* [1, 1]);
+imwrite(uint8(quantized), filename, "tif");
 
 
-%% Quantize Gray level
 
-figure
-subplot(121)
-imshow(img, [0, 255])
-subplot(122)
-imshow(quantize(img, 3), [0, 255])
+
+
+
+

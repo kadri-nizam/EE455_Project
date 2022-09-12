@@ -1,3 +1,19 @@
+% NEAREST_NEIGHBOUR  performs upsampling of img via bilinear interpolation
+%
+%   NEAREST_NEIGHBOUR(img, [M, N]) returns an image matrix of dimensions 
+%   (M, N), upsampled via nearest-neighbour interpolation
+%
+%   Processing Flow:
+%       1) Determine size of pixel block from input and output dimension
+%       2) Replicate grayscale value of reference pixel into the pixel
+%       block
+%       3) Arrange pixel block in the correct order, following that of the
+%       input
+%
+%   See also SPATIAL_UPSAMPLE, BILINEAR
+%
+%   Implementation detail can be found at: http://google.com
+
 function new_img = nearest_neighbour(img, target_dim)
     % Prepare variables involving sizes
     [n_row, n_col] = size(img);

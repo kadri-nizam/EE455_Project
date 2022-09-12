@@ -1,7 +1,7 @@
 % SPATIAL_DOWNSAMPLE  downsamples img to size (M, N)
 %
 %   SPATIAL_DOWNSAMPLE(img, [M, N]) returns an image matrix of dimensions 
-%   (M, N), upsampled via nearest neighbour interpolation
+%   (M, N), downsampled via max-pool
 %
 %   SPATIAL_DOWNSAMPLE(img, [M, N], method) downsamples img to size
 %   (M, N) using the specified downsampling method
@@ -14,7 +14,7 @@
 %
 %   See also SPATIAL_UPSAMPLE
 %
-%   Implementation details can be found at: http://google.com
+%   Implementation detail can be found at: http://google.com
 
 function new_img = spatial_downsample(img, target_dim, varargin)
 
