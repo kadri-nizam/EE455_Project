@@ -14,7 +14,9 @@
 %
 %   See also SPATIAL_UPSAMPLE
 %
-%   Implementation detail can be found at: http://google.com
+%   Implementation detail can be found at:
+%
+%       https://github.com/kadri-nizam/EE455_Project/raw/main/EE455___Project-1.pdf
 
 function new_img = spatial_downsample(img, target_dim, varargin)
 

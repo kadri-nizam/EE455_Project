@@ -15,7 +15,9 @@
 %   Running the project:
 %       Simply press "Run" on main.m in the MATLAB IDE or type "main" into 
 %       the MATLAB console. Discussion of the algorithms in this
-%       code base as well as the results is covered in http://google.com
+%       code base as well as the results is covered in our report at
+%       
+%       https://github.com/kadri-nizam/EE455_Project/raw/main/EE455___Project-1.pdf
 %     
 %   See also:
 %       SPATIAL_UPSAMPLE, SPATIAL_DOWNSAMPLE, QUANTIZE, NEAREST_NEIGHBOUR,
