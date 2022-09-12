@@ -1,3 +1,21 @@
+% QUANTIZE  changes the bitdepth of the input image to a specified number
+% of bits
+%
+%   QUANTIZE(img, num_bits) returns an image matrix with its bitdepth
+%   lowered to 2^num_bits levels
+%
+%   QUANTIZE(img, num_bits, method) modifies the bitdepth of img using the
+%   method specified
+%
+%   Methods available to choose from:
+%
+%       1) Modulo (default): "mod" OR "modulo"
+%       2) Domain Transform: "domain"
+%
+%   See also MOD, ROUND
+%
+%   Implementation details can be found at: http://google.com
+
 function new_img = quantize(img, num_bits, varargin)
 
     % Use modulo operation if no method is specified

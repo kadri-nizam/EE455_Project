@@ -1,7 +1,23 @@
-%% Spatial downsampling
+% SPATIAL_DOWNSAMPLE  downsamples img to size (M, N)
+%
+%   SPATIAL_DOWNSAMPLE(img, [M, N]) returns an image matrix of dimensions 
+%   (M, N), upsampled via nearest neighbour interpolation
+%
+%   SPATIAL_DOWNSAMPLE(img, [M, N], method) downsamples img to size
+%   (M, N) using the specified downsampling method
+%
+%   Methods available to choose from:
+%
+%       1) Max-Pool (default): "max" OR "max_pool"
+%       2) Min-Pool: "min" OR "min_pool"
+%       3) Avg-Pool: "avg" OR "avg_pool"
+%
+%   See also SPATIAL_UPSAMPLE
+%
+%   Implementation details can be found at: http://google.com
 
 function new_img = spatial_downsample(img, target_dim, varargin)
-    
+
     % Use max_pool as default if user did not provide a method
     % argument
     switch nargin
@@ -51,18 +67,19 @@ end
 %% Helper Functions
 
 function f = downsample_method(method)
+% DOWNSAMPLE_METHOD test
 
     switch lower(method)
         % Return max value within the entire matrix
-        case {"max_pool", "max", "maximum_pool"}
+        case {"max_pool", "max"}
             f =@(img_block) max(img_block, [], "all");
 
         % Calculate the mean using all elements in the matrix
-        case {"avg_pool", "avg", "mean", "average_pool"}
+        case {"avg_pool", "avg"}
             f =@(img_block) mean(img_block, "all");
 
         % Return min value within the entire matrix
-        case {"min_pool", "min", "minimum_pool"}
+        case {"min_pool", "min"}
             f =@(img_block) min(img_block, [], "all");
 
         otherwise
