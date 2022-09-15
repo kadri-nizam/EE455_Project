@@ -1,6 +1,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/matlab,windows,macos,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=matlab,windows,macos,visualstudiocode
 
+### Image outputs ###
+**/output/*
+*.zip
+
+
 ### macOS ###
 # General
 .DS_Store
