@@ -1,6 +1,13 @@
 % IMAGE_XOR is the binary image XOR operator
 % IMAGE_XOR(A, B) returns the exclusive or between image A and
 % image B
+%
+%   See also:
+%       IMAGE_AND, IMAGE_OR, IMAGE_NOT, IMAGE_MIN
+%
+%   %   Implementation details can be found at:
+%
+%       https://github.com/kadri-nizam/EE455_Project/raw/main/EE455___Project-2.pdf
 
 function output = image_xor(A, B)
     % Ensure that the input images are the same size

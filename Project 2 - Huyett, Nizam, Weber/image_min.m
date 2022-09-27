@@ -1,6 +1,13 @@
 % IMAGE_MIN is the binary image MIN operator
 % IMAGE_MIN(A, B) returns a composite between image A and B where the
 % minimum between the two images at every pixel is extracted
+%
+%   See also:
+%       IMAGE_AND, IMAGE_OR, IMAGE_XOR, IMAGE_NOT
+%
+%   Implementation details can be found at:
+%
+%       https://github.com/kadri-nizam/EE455_Project/raw/main/EE455___Project-2.pdf
 
 function output = image_min(A, B)
     % Ensure that the input images are the same size

@@ -10,8 +10,11 @@
 %          index = value + 1 is incremented by 1
 %       3) Repeat until f_labeled is fully iterated for an O(N) execution
 %
+%   See also:
+%       MY_BWLABEL
+%
 %   Further implementation details can be found at:
-%       http://google.com
+%       https://github.com/kadri-nizam/EE455_Project/raw/main/EE455___Project-2.pdf
 
 function [count, label] = count_labels(f_labeled)
 
