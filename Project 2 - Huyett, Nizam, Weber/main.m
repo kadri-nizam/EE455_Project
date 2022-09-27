@@ -60,7 +60,7 @@ f_rgb = label2rgb(f_label);
 % Prepare to get top N labels
 N = 4;
 top_N = label(1:N);
-ind = 0;
+ind = zeros(size(f_label));
 
 % We perform a union of the boolean masks to get a set of of pixels that
 % are our top N largest labels
@@ -68,14 +68,14 @@ for ii = 1:N
     ind = ind | f_label == top_N(ii);
 end
 
-% Now do an intersect between flabela and the boolean masks. Where the mask
+% Now do an intersect between flabel and the boolean masks. Where the mask
 % is 1, we get the value of flabel. Where it's 0, we get 0.
 f_top_N = f_label .* ind;
 
 % Write out all pertinent images to file
-imwrite(logical(f_thresh), "output/Q1_lenna_threhold.tif", "tif");
-imwrite(uint8(f_rgb), "output/Q1_lenna_rgb_labeled.tif", "tif");
-imwrite(uint8(label2rgb(f_top_N)), sprintf("output/Q1_lenna_rgb_top_%d.tif", N), "tif");
+imwrite(logical(f_thresh), "output/Q1a_lenna_threhold.tif", "tif");
+imwrite(uint8(f_rgb), "output/Q1v_lenna_rgb_labeled.tif", "tif");
+imwrite(uint8(label2rgb(f_top_N)), sprintf("output/Q1c_lenna_rgb_top_%d.tif", N), "tif");
 
 
 %% Question 2 - Logical Operations
@@ -88,9 +88,9 @@ match_xor = image_xor(match1, match2);
 cameramandrill = image_min(mandrill, cameraman);
 
 % Write out all pertinent images to file
-imwrite(logical(match_not), "output/Q2_NOT.tif", "tif");
-imwrite(logical(match_and), "output/Q2_AND.tif", "tif");
-imwrite(logical(match_or), "output/Q2_OR.tif", "tif");
-imwrite(logical(match_xor), "output/Q2_XOR.tif", "tif");
+imwrite(match_not, "output/Q2a_NOT.tif", "tif");
+imwrite(match_and, "output/Q2b_AND.tif", "tif");
+imwrite(match_or, "output/Q2c_OR.tif", "tif");
+imwrite(match_xor, "output/Q2d_XOR.tif", "tif");
 
-imwrite(uint8(cameramandrill), "output/Q2_MIN.tif", "tif")
+imwrite(cameramandrill, "output/Q2e_MIN.tif", "tif")

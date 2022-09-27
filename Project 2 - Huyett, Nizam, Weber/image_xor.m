@@ -16,5 +16,5 @@ function output = image_xor(A, B)
         end
     end
      
-    output = uint8(output);
+    output = logical(output);
 end

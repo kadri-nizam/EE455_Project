@@ -13,5 +13,5 @@ function output = image_not(A)
         end
     end
 
-    output = uint8(output);
+    output = logical(output);
 end

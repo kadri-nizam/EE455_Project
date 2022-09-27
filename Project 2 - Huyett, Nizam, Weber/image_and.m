@@ -16,5 +16,5 @@ function output = image_and(A, B)
         end
     end
      
-    output = uint8(output);
+    output = logical(output);
 end
