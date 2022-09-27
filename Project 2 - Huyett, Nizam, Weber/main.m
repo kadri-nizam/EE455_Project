@@ -11,7 +11,9 @@
 %       4) image_min.m - Minimum operator
 % 
 %   Restrictions:
-%       Functions are only tested on grayscale and binary images.
+%       - Functions are only tested on grayscale and binary images.
+%       - The bwlabel function used for connected-component labeling
+%       requires MATLAB's Image Processing Toolbox.
 %
 %   Running the project:
 %       Simply press "Run" on main.m in the MATLAB IDE or type "main" into 
@@ -21,7 +23,7 @@
 %       https://github.com/kadri-nizam/EE455_Project/raw/main/EE455___Project-2.pdf
 %     
 %   See also:
-%       COUNT_LABELS, IMAGE_AND, IMAGE_OR, IMAGE_XOR, IMAGE_NOT, IMAGE_MIN
+%       COUNT_LABELS, MY_BWLABEL, IMAGE_AND, IMAGE_OR, IMAGE_XOR, IMAGE_NOT, IMAGE_MIN
 %
 %   Authors:
 %       Austin Huyett, Kadri Nizam, Hayden Weber
@@ -48,8 +50,13 @@ thresh_percent = 60;
 threshold = thresh_percent/100 * double(max(lenna, [], "all"));
 f_thresh = lenna > threshold;
 
-% Label the image with 8-connectivity
-[f_label, num] = bwlabel(f_thresh, 8);
+% Label the image with 8-connectivity. If the Image Processing Toolbox is
+% not available, use the custom written connected-component labeler
+try
+    [f_label, ~] = bwlabel(f_thresh, 8);
+catch
+    [f_label, ~] = my_bwlabel(f_thresh, 8);
+end
 
 % Map the label numbers into RGB colors
 f_rgb = label2rgb(f_label);

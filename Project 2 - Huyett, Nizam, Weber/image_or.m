@@ -1,6 +1,13 @@
 % IMAGE_OR is the binary image OR operator
 % IMAGE_OR(A, B) returns the union between image A and
 % image B
+%
+%   See also:
+%       IMAGE_AND, IMAGE_XOR, IMAGE_NOT, IMAGE_MIN
+%
+%   %   Implementation details can be found at:
+%
+%       https://github.com/kadri-nizam/EE455_Project/raw/main/EE455___Project-2.pdf
 
 function output = image_or(A, B)
     % Ensure that the input images are the same size
